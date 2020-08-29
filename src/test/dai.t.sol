@@ -19,12 +19,12 @@ pragma solidity >=0.5.12;
 
 import "ds-test/test.sol";
 
-import "../dai.sol";
+import "../csc.sol";
 
 contract TokenUser {
-    Dai  token;
+    Csc  token;
 
-    constructor(Dai token_) public {
+    constructor(Csc token_) public {
         token = token_;
     }
 
@@ -86,11 +86,11 @@ interface Hevm {
     function warp(uint256) external;
 }
 
-contract DaiTest is DSTest {
+contract CscTest is DSTest {
     uint constant initialBalanceThis = 1000;
     uint constant initialBalanceCal = 100;
 
-    Dai token;
+    Csc token;
     Hevm hevm;
     address user1;
     address user2;
@@ -121,8 +121,8 @@ contract DaiTest is DSTest {
         self = address(this);
     }
 
-    function createToken() internal returns (Dai) {
-        return new Dai(99);
+    function createToken() internal returns (Csc) {
+        return new Csc(99);
     }
 
     function testSetupPrecondition() public {
