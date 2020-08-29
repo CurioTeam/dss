@@ -17,7 +17,7 @@ pragma solidity >=0.5.12;
 
 import "./lib.sol";
 
-contract Dai is LibNote {
+contract Csc is LibNote {
     // --- Auth ---
     mapping (address => uint) public wards;
     function rely(address guy) external note auth { wards[guy] = 1; }
@@ -28,8 +28,8 @@ contract Dai is LibNote {
     }
 
     // --- ERC20 Data ---
-    string  public constant name     = "Dai Stablecoin";
-    string  public constant symbol   = "DAI";
+    string  public constant name     = "Curio Stable Coin";
+    string  public constant symbol   = "CSC";
     string  public constant version  = "1";
     uint8   public constant decimals = 18;
     uint256 public totalSupply;
