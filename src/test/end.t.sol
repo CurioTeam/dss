@@ -96,7 +96,6 @@ contract EndTest is DSTest {
 
     uint constant WAD = 10 ** 18;
     uint constant RAY = 10 ** 27;
-    uint constant MLN = 10 ** 6;
 
     function ray(uint wad) internal pure returns (uint) {
         return wad * 10 ** 9;
@@ -162,15 +161,13 @@ contract EndTest is DSTest {
 
         vat.rely(address(gemA));
 
-        Flipper flip = new Flipper(address(vat), address(cat), name);
+        Flipper flip = new Flipper(address(vat), name);
         vat.hope(address(flip));
         flip.rely(address(end));
         flip.rely(address(cat));
-        cat.rely(address(flip));
         cat.file(name, "flip", address(flip));
-        cat.file(name, "chop", 1 ether);
-        cat.file(name, "dunk", rad(25000 ether));
-        cat.file("box", rad((10 ether) * MLN));
+        cat.file(name, "chop", ray(1 ether));
+        cat.file(name, "lump", rad(15 ether));
 
         ilks[name].pip = pip;
         ilks[name].gem = coin;
@@ -424,8 +421,7 @@ contract EndTest is DSTest {
         // get 1 dai from ali
         ali.move(address(ali), address(this), rad(1 ether));
         vat.hope(address(gold.flip));
-        (,uint lot,,,,,,) = gold.flip.bids(auction);
-        gold.flip.tend(auction, lot, rad(1 ether)); // bid 1 dai
+        gold.flip.tend(auction, 10 ether, rad(1 ether)); // bid 1 dai
         assertEq(dai(urn1), 14 ether);
 
         // collateral price is 5
